@@ -74,5 +74,5 @@ train_MSE = zeros(opts.numepochs,1);
 
 for iter = 1:1:opts.numepochs
     opts.learning = opts.learning * (0.9999^iter);
-    [S,Y] = Forward(train_X, nn);
+    [S, OX, AX, OY, AY] = Forward(train_X, nn);
 end

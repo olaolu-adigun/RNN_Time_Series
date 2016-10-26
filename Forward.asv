@@ -7,11 +7,16 @@ W3 = net.W3;
 bias1 = net.bias1;
 bias2 = net.bias2;
 bias3 = net.bias3;
+OX = zeros(size(X,2),net.layers{2}.size,1);
+AX = zeros(size(X,2),net.layers{3}
 
-S = zeros(size(X'));
-for a = 1:1:size(s,1)
+for a = 1:1:size(X,2)
     for b = 1:1:size(X,1)
        if b == 1
+           oh = (W1*X(b,a))+ bias1;
+           ah = Sigmoid(oh);
+           oy = (W3*ah) + bias3;
+           ay = oy
            
            
        else
