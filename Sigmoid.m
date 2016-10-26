@@ -1,7 +1,6 @@
-function [ax] = Sigmoid(x)
+function [ax] = Sigmoid(ox)
 
-
-ax = 1./1+exp(-x);
+ax = 1./(1+exp(-ox));
 
 end
 
