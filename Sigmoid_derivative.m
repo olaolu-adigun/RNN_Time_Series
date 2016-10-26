@@ -1,7 +1,6 @@
-function [ output_args ] = Sigmoid_derivative(oh)
-%UNTITLED6 Summary of this function goes here
-%   Detailed explanation goes here
+function [ del_oh ] = Sigmoid_derivative(ah)
 
+%%---Find the derivative of Sigmoid Function
+del_oh = (1 - ah).* ah;
 
 end
-
