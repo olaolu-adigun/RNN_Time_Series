@@ -1,7 +1,7 @@
 
 clear;
 [X,T] = exchanger_dataset;
-X = X'; T = T';
+X =
 
 %---Training set
 train_x = X(:,1:3000);
