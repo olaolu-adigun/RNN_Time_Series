@@ -48,7 +48,7 @@ nn.bias1 = unifrnd(b, e, nn.layers{2}.size,1);
 nn.bias2 = unifrnd(b, e, nn.layers{2}.size,1);
 nn.bias3 = unifrnd(b, e, nn.layers{3}.size,1);
 
-%% PREPROCESS DATA
+%% PREPROCESSING DATA
 num_train = size(train_x,2) - M + 1;
 num_test =  size(test_x,2) - M + 1;
 
@@ -74,5 +74,12 @@ train_MSE = zeros(opts.numepochs,1);
 
 for iter = 1:1:opts.numepochs
     opts.learning = opts.learning * (0.9999^iter);
-    [S, OX, AX, OY, AY] = Forward(train_X, nn);
+    for j = 1:1:size(train_X, 2)
+        ax = train_X(:,j);
+        ay = train_Y(:,j);
+        
+        [OH, AH, OY, AY] = Forward(ax, nn);
+        [delW1,delW2,delW3, del_bias1, del_bias2, del_bias3] = Backpropagation(OH, AH, OY,AY, ax, ay, net);
+    
+    end
 end
