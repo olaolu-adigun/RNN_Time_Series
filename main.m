@@ -7,6 +7,7 @@ T = cell2mat(T);
 %---Training set
 train_x = X(:,1:3000);
 train_y = T(:,1:3000);
+[Z , mu, sigma] = zscore(train_y);
 
 %---Test set
 test_x = X(:, 3001:4000);
