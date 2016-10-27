@@ -7,11 +7,15 @@ T = cell2mat(T);
 %---Training set
 train_x = X(:,1:3000);
 train_y = T(:,1:3000);
+
 [Z , mu, sigma] = zscore(train_y);
+train_y = Z;
 
 %---Test set
 test_x = X(:, 3001:4000);
 test_y = T(:, 3001:4000);
+
+test_y = (1/sigma)*(test_y - mu);
 
 %---Size of Layers
 I = size(train_x,1);
