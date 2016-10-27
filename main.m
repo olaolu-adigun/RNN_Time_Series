@@ -22,7 +22,7 @@ I = size(train_x,1);
 J = 6;
 K = size(train_y,1);
 
-M = 5;
+M = 4;
 assert(size(train_x,1)==size(train_y, 1), 'Check the data set.');
 
 %% Initialize optimization parameters and weights  
@@ -40,7 +40,7 @@ nn.layers = {
     };
 
 %---Weight and bias random range
-e = 0.3;
+e = 0.5;
 b = -e;
 
 %% Initialize the weights 
