@@ -1,6 +1,6 @@
-
 clear;
 [X,T] = exchanger_dataset;
+
 X = cell2mat(X); 
 T = cell2mat(T);
 
@@ -22,11 +22,10 @@ I = size(train_x,1);
 J = 6;
 K = size(train_y,1);
 
-M = 4;
+M = 3;
 assert(size(train_x,1)==size(train_y, 1), 'Check the data set.');
 
 %% Initialize optimization parameters and weights  
-
 %---Optimization parameter
 
 opts.numepochs = 100;
@@ -54,24 +53,14 @@ nn.bias2 = unifrnd(b, e, nn.layers{2}.size,1);
 nn.bias3 = unifrnd(b, e, nn.layers{3}.size,1);
 
 %% PREPROCESSING DATA
-num_train = size(train_x,2) - M + 1;
-num_test =  size(test_x,2) - M + 1;
+num_train = size(train_x,2);
+num_test =  size(test_x,2);
 
-train_X = zeros(M, num_train);
-train_Y = zeros(K*M , num_train);
+train_X = train_x;
+train_Y = train_y;
 
-test_X = zeros(M, num_test);
-test_Y = zeros(K*M , num_test);
-
-for i = 1:1:num_train
-    train_X(1:M, i) = train_x(i: i+M-1);
-    train_Y(1:M, i) = train_y(i: i+M-1);
-end
-
-for j = 1:1:num_test
-    test_X(1:M, j) = test_x(j:j+M-1);
-    test_Y(1:M, j) = test_y(j:j+M-1);
-end
+test_X = test_x;
+test_Y = test_y;
 
 %% Training
 % Feed-Forward Propagation
