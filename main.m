@@ -74,6 +74,5 @@ for iter = 1:1:opts.numepochs
         
         [OH, AH, OY, AY] = Forward(ax, nn);
         [delW1, delW2, delW3, del_bias1, del_bias2, del_bias3] = Backpropagation(OH, AH, OY,AY, ax, ay, nn);
-    
     end
 end
